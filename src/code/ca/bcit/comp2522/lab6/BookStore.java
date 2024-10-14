@@ -25,4 +25,25 @@ public class BookStore<T extends Literature>
          }
       }
    }
+
+   static class BookStoreInfo
+   {
+      public void displayInfo(String storeName, int itemCount)
+      {
+         System.out.println("BookStore: " + storeName + ", Items: " + itemCount);
+      }
+   }
+
+   class NovelStatistics
+   {
+      public double averageTitleLength()
+      {
+         int totalLength = 0;
+         for (T item : items)
+         {
+            totalLength += item.getTitle().length();
+         }
+         return (double) totalLength / items.size();
+      }
+   }
 }
