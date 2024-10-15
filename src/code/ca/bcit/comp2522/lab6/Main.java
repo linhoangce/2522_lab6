@@ -8,10 +8,10 @@ public class Main
 
       bookStore = new BookStore<>();
 
-      bookStore.addItem(new Novel("Blabla"));
+      bookStore.addItem(new Novel("Z"));
       bookStore.addItem(new ComicBook("Batman"));
-      bookStore.addItem(new Magazine("Vouge"));
+      bookStore.addItem(new Magazine("A"));
 
-      bookStore.printItem();
+      bookStore.printTitlesInAlphaOrder();
    }
 }

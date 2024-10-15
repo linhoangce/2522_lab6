@@ -1,11 +1,22 @@
 package ca.bcit.comp2522.lab6;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class BookStore<T extends Literature>
 {
-   private final List<T> items = new ArrayList<>();
+   private final List<T> items;
+
+   public BookStore()
+   {
+      items = new ArrayList<>();
+   }
+
+   public List<T> getItems()
+   {
+      return items;
+   }
 
    public void addItem(final T item)
    {
@@ -22,6 +33,41 @@ public class BookStore<T extends Literature>
          if(item != null)
          {
             System.out.println(item.getTitle());
+         }
+      }
+   }
+
+   public void printBookTitle(String title)
+   {
+      items.forEach(item ->
+      {
+         if (item.getTitle().contains(title))
+         {
+            System.out.println(item.getTitle());
+         }
+      });
+   }
+
+   public void printTitlesInAlphaOrder()
+   {
+      items.sort(new Comparator<T>()
+      {
+         @Override
+         public int compare(final T o1, final T o2)
+         {
+            return o1.getTitle().compareToIgnoreCase(o2.getTitle());
+         }
+      });
+      items.forEach(item -> System.out.println(item.getTitle()));
+   }
+
+   public void addNovelsToCollection(List<? super Novel> novelCollection)
+   {
+      for (T item : items)
+      {
+         if (item instanceof Novel)
+         {
+            novelCollection.add((Novel) item);
          }
       }
    }
