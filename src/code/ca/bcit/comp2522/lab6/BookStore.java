@@ -50,14 +50,7 @@ public class BookStore<T extends Literature>
 
    public void printTitlesInAlphaOrder()
    {
-      items.sort(new Comparator<T>()
-      {
-         @Override
-         public int compare(final T o1, final T o2)
-         {
-            return o1.getTitle().compareToIgnoreCase(o2.getTitle());
-         }
-      });
+      items.sort((o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()));
       items.forEach(item -> System.out.println(item.getTitle()));
    }
 
